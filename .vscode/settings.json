@@ -1,37 +1,52 @@
-{   
-    "terminal.integrated.fontSize": 16,    
-    "editor.showUnused": true, // show gray unused var
-    "python.linting.pylintEnabled": false, //disable pylint 
-    "python.terminal.activateEnvInCurrentTerminal": true,  // автоматически активировать виртуальное окружение
-    "python.linting.enabled": true,  // линтер включен
-    //"python.linting.pycodestyleEnabled": true, // PEP8
-    "files.autoSave": "onFocusChange",  // автоматически сохранять файл при переключенни на другое окно
-    "editor.rulers": [
-        120  // рисует линию, где заканчивается 120-й символ строки
-    ],
-    "python.formatting.provider": "black",  // использовать Black в качестве форматтера
-    "python.formatting.blackArgs": [
-        "--line-length",  // длина строки 120 символов
-        "120"
-    ],
-    "python.linting.flake8Enabled": true,  // использовать flake8 в качестве линтера
-    "python.linting.flake8Args": [
-        // "--config=${workspaceFolder}/.flake8",  // задаем конфигурацию в отдельном файле
-        // "--ignore=D100,D101,D102,D103,D104,D105,D106,D107",  // игнорировать ошибки, связаные с Docstrings
-         "--exclude=migrations/,settings.py,venv/,.git",  // не проверять каталоги migrations/,settings.py,venv/
-         "--max-complexity=8",
-         "--max-line-length=120",
+{
+  "terminal.integrated.fontSize": 16,
+  "editor.showUnused": true, // show gray unused var
+  "python.linting.pylintEnabled": false, //disable pylint
+  "python.terminal.activateEnvInCurrentTerminal": true, // автоматически активировать виртуальное окружение
+  "python.linting.enabled": true, // линтер включен
+  //"python.linting.pycodestyleEnabled": true, // PEP8
+  "files.autoSave": "onFocusChange", // автоматически сохранять файл при переключенни на другое окно
+  "editor.rulers": [
+    120 // рисует линию, где заканчивается 120-й символ строки
+  ],
+  "python.formatting.provider": "black", // использовать Black в качестве форматтера
+  "python.formatting.blackArgs": [
+    "--line-length", // длина строки 120 символов
+    "120"
+  ],
+  "python.linting.flake8Enabled": true, // использовать flake8 в качестве линтера
+  "python.linting.flake8Args": [
+    // "--config=${workspaceFolder}/.flake8",  // задаем конфигурацию в отдельном файле
+    // "--ignore=D100,D101,D102,D103,D104,D105,D106,D107",  // игнорировать ошибки, связаные с Docstrings
+    "--exclude=migrations/,settings.py,venv/,.git", // не проверять каталоги migrations/,settings.py,venv/
+    "--max-complexity=8",
+    "--max-line-length=120"
+  ],
+  "editor.formatOnSave": true, // форматировать код, при любом сохранении - вот тут будет срабатывать Black
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true, // sort import
+    "editor.formatOnSave": true // format on save ctrl+S
+  },
+  "files.trimFinalNewlines": true, // remove last empty line
 
-    ],
-    "editor.formatOnSave": true,  // форматировать код, при сохранении - вот тут будет срабатывать Black
-    "editor.codeActionsOnSave": {
-        "source.organizeImports": true, // sort import
-        "editor.formatOnSave": true, 
-    },
-    "files.trimFinalNewlines": true,
-    "cSpell.words": [
-        "authapp",
-        "viewsets"
-    ], // remove last empty line
+  "emmet.includeLanguages": {
+    "javascript": "html" // lets check html code inside js file
+  },
 
+  // "[javascript]": {
+  //   "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  // },
+  // "[javascriptreact]": {
+  //   "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  // },
+  // "[typescript]": {
+  //   "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  // },
+  // "[typescriptreact]": {
+  //   "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  // },
+  "eslint.format.enable": true, // format js code
+  "eslint.alwaysShowStatus": true,
+
+  "cSpell.words": ["authapp", "dzmph", "oysm", "ujcqif", "viewsets", "zijxn"] // add words to spell checker
 }
