@@ -8,7 +8,7 @@ import mainapp.views as mainapp_views
 router = DefaultRouter()
 router.register("users", auth_views.CustomUserViewSet)
 router.register("projects", mainapp_views.ProjectViewSet)
-router.register("ToDos", mainapp_views.ToDoViewSet)
+router.register("ToDos", mainapp_views.ToDoViewSet, basename="ToDo")
 
 
 urlpatterns = [

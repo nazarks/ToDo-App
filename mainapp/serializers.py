@@ -15,4 +15,4 @@ class ProjectModelSerializer(serializers.ModelSerializer):
 class ToDoModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = mainapp_models.ToDo
-        fields = ["id", "description", "is_active", "project", "user"]
+        fields = ["id", "description", "is_active", "project", "user", "created"]
