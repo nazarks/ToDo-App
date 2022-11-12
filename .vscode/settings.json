@@ -27,10 +27,25 @@
     "source.organizeImports": true, // sort import
     "editor.formatOnSave": true // format on save ctrl+S
   },
+
+  "python.analysis.indexing": true, // for django import or side lib
+  "python.analysis.packageIndexDepths": [
+    ["django", 5],
+    ["numpy", 2]
+  ],
+  "python.sortImports.args": ["--src=${workspaceFolder}"], // wrong sort import
   "files.trimFinalNewlines": true, // remove last empty line
 
   "emmet.includeLanguages": {
     "javascript": "html" // lets check html code inside js file
+  },
+
+  "beautify.language": {
+    "html": ["django-html"] //  fix for django templates
+  },
+  "[django-html]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "HookyQR.beautify"
   },
 
   // "[javascript]": {
@@ -48,5 +63,15 @@
   "eslint.format.enable": true, // format js code
   "eslint.alwaysShowStatus": true,
 
-  "cSpell.words": ["authapp", "dzmph", "oysm", "ujcqif", "viewsets", "zijxn"] // add words to spell checker
+  "cSpell.words": [
+    "authapp",
+    "dzmph",
+    "mainapp",
+    "oysm",
+    "TODOS",
+    "ujcqif",
+    "viewsets",
+    "zijxn"
+  ],
+  "python.analysis.typeCheckingMode": "basic" // add words to spell checker
 }
