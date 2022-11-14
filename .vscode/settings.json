@@ -18,7 +18,7 @@
   "python.linting.flake8Args": [
     // "--config=${workspaceFolder}/.flake8",  // задаем конфигурацию в отдельном файле
     // "--ignore=D100,D101,D102,D103,D104,D105,D106,D107",  // игнорировать ошибки, связаные с Docstrings
-    "--exclude=migrations/,settings.py,venv/,.git", // не проверять каталоги migrations/,settings.py,venv/
+    "--exclude=migrations/,settings.py,venv/,.git,.vscode/", // не проверять каталоги migrations/,settings.py,venv/
     "--max-complexity=8",
     "--max-line-length=120"
   ],
@@ -31,6 +31,7 @@
   "python.analysis.indexing": true, // for django import or side lib
   "python.analysis.packageIndexDepths": [
     ["django", 5],
+    ["djangorestframework", 4],
     ["numpy", 2]
   ],
   "python.sortImports.args": ["--src=${workspaceFolder}"], // wrong sort import
@@ -40,13 +41,13 @@
     "javascript": "html" // lets check html code inside js file
   },
 
-  "beautify.language": {
-    "html": ["django-html"] //  fix for django templates
-  },
-  "[django-html]": {
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "HookyQR.beautify"
-  },
+  // "beautify.language": {
+  //   "html": ["django-html"] //  fix for django templates
+  // },
+  // "[django-html]": {
+  //   "editor.formatOnSave": true,
+  //   "editor.defaultFormatter": "HookyQR.beautify"
+  // },
 
   // "[javascript]": {
   //   "editor.defaultFormatter": "dbaeumer.vscode-eslint"
@@ -65,9 +66,11 @@
 
   "cSpell.words": [
     "authapp",
+    "Browsable",
     "dzmph",
     "mainapp",
     "oysm",
+    "Paginations",
     "TODOS",
     "ujcqif",
     "viewsets",
