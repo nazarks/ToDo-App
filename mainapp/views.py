@@ -21,13 +21,13 @@ class ToDoPaginations(PageNumberPagination):
 class ProjectViewSet(ModelViewSet):
     queryset = mainapp_models.Project.objects.all()
     serializer_class = mainapp_serializers.ProjectModelSerializer
-    pagination_class = ProjectPaginations
+    # pagination_class = ProjectPaginations
     filterset_class = ProjectFilter
 
 
 class ToDoViewSet(ModelViewSet):
     serializer_class = mainapp_serializers.ToDoModelSerializer
-    pagination_class = ToDoPaginations
+    # pagination_class = ToDoPaginations
     filterset_class = ToDoFilter
 
     def get_queryset(self):

@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap"; // replace react-router-dom link with bootstrap LinkContainer
 
 const MainMenu = () => {
   return (
@@ -8,23 +9,29 @@ const MainMenu = () => {
         collapseOnSelect
         expand="lg"
         className="mr-auto"
-        onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
+        // onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
       >
         <Container>
-          <Navbar.Brand href="/"> Todo App </Navbar.Brand>
+          <LinkContainer to="/">
+            <Navbar.Brand>Todo App</Navbar.Brand>
+          </LinkContainer>
           <Navbar.Toggle area-aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto" activeKey="/">
               <Nav.Item>
-                <Nav.Link eventKey="link-1">Link</Nav.Link>
+                <LinkContainer to="/users">
+                  <Nav.Link>Users</Nav.Link>
+                </LinkContainer>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link eventKey="link-2">Link</Nav.Link>
+                <LinkContainer to="/projects">
+                  <Nav.Link>Projects</Nav.Link>
+                </LinkContainer>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link eventKey="disabled" disabled>
-                  Disabled
-                </Nav.Link>
+                <LinkContainer to="/todos">
+                  <Nav.Link>ToDo</Nav.Link>
+                </LinkContainer>
               </Nav.Item>
               <NavDropdown title="Dropdown" id="nav-dropdown">
                 <NavDropdown.Item eventKey="4.1">Action</NavDropdown.Item>
