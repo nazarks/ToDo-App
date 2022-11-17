@@ -2,19 +2,17 @@ import React from "react";
 import { FaInstagramSquare, FaTwitter } from "react-icons/fa";
 import { GrFacebook } from "react-icons/gr";
 import { SiTodoist } from "react-icons/si";
+import { LinkContainer } from "react-router-bootstrap";
 
 const Footer = () => {
   return (
     <footer className="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
       <div className="col-md-5 d-flex align-items-center">
-        <a
-          href="/"
-          className="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1"
-        >
+        <LinkContainer to="/" className="data-pointer">
           <SiTodoist />
-        </a>
+        </LinkContainer>
         <span className="text-muted">
-          © 2022 To Do Company, Inc. All rights reserved.
+          &nbsp;© 2022 To Do Company, Inc. All rights reserved.
         </span>
       </div>
 
