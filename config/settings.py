@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "django_filters",
     "rest_framework.authtoken",
+    "rest_framework_simplejwt",
     # custom app
     "authapp",
     "mainapp",

@@ -3,6 +3,7 @@ from django.urls import include, path
 from rest_framework.authtoken import views
 from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt import views as jwt_views
+from rest_framework_simplejwt.views import TokenVerifyView
 
 import authapp.views as auth_views
 import mainapp.views as mainapp_views
@@ -19,5 +20,6 @@ urlpatterns = [
     path("api-token-auth/", views.obtain_auth_token),
     path("api-jwt-token/", jwt_views.TokenObtainPairView.as_view(), name="token_obtain_pair"),
     path("api-jwt-token/refresh/", jwt_views.TokenRefreshView.as_view(), name="token_refresh"),
+    path("api-jwt-token/verify/", TokenVerifyView.as_view(), name="token_verify"),
     path("", include(router.urls)),
 ]
