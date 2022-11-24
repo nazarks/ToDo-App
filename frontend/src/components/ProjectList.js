@@ -8,9 +8,6 @@ const ProjectItem = ({ item }) => {
       <td>
         <Link to={`/projects/${item.id}`}>{item.name}</Link>
       </td>
-      {/* <LinkContainer to="/">
-        <td>{item.name}</td>
-      </LinkContainer> */}
       <td>{item.url}</td>
       <td>{item.users.join(", ")}</td>
     </tr>
