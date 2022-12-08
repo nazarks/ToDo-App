@@ -7,7 +7,6 @@ class MainMenu extends React.Component {
     if (this.props.isAuth()) {
       return (
         <NavDropdown title={this.props.username} id="nav-dropdown">
-          <NavDropdown.Item eventKey="4.1">Action</NavDropdown.Item>
           <NavDropdown.Item eventKey="4.2">Another action</NavDropdown.Item>
           <NavDropdown.Item eventKey="4.3">
             Something else here
@@ -37,16 +36,36 @@ class MainMenu extends React.Component {
                     <Nav.Link>Users</Nav.Link>
                   </LinkContainer>
                 </Nav.Item>
-                <Nav.Item>
-                  <LinkContainer to="/projects">
-                    <Nav.Link>Projects</Nav.Link>
-                  </LinkContainer>
-                </Nav.Item>
-                <Nav.Item>
+                <NavDropdown title="Projects">
+                  <NavDropdown.Item>
+                    <LinkContainer to="/projects">
+                      <Nav.Link>Projects</Nav.Link>
+                    </LinkContainer>
+                  </NavDropdown.Item>
+                  <NavDropdown.Item>
+                    <LinkContainer to="/projects/create">
+                      <Nav.Link>Create Project</Nav.Link>
+                    </LinkContainer>
+                  </NavDropdown.Item>
+                </NavDropdown>
+
+                {/* <Nav.Item>
                   <LinkContainer to="/todos">
                     <Nav.Link>ToDo</Nav.Link>
                   </LinkContainer>
-                </Nav.Item>
+                </Nav.Item> */}
+                <NavDropdown title="ToDo">
+                  <NavDropdown.Item>
+                    <LinkContainer to="/todos">
+                      <Nav.Link>ToDos</Nav.Link>
+                    </LinkContainer>
+                  </NavDropdown.Item>
+                  <NavDropdown.Item>
+                    <LinkContainer to="/todos/create">
+                      <Nav.Link>Create ToDo</Nav.Link>
+                    </LinkContainer>
+                  </NavDropdown.Item>
+                </NavDropdown>
                 {this.userMenu()}
               </Nav>
 

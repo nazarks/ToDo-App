@@ -1,23 +1,28 @@
 import React from "react";
-import { Table } from "react-bootstrap";
+import { Button, Table } from "react-bootstrap";
 
 const getLocalDateTime = (dateTime) => {
   const utcDateTime = new Date(dateTime);
   return utcDateTime.toLocaleString();
 };
 
-const ToDoItem = ({ item }) => {
+const ToDoItem = ({ item, deleteToDo }) => {
   return (
     <tr>
       <td>{item.project}</td>
       <td>{item.description}</td>
       <td>{item.user}</td>
       <td>{getLocalDateTime(item.created)}</td>
+      <td>
+        <Button variant="danger" size="sm" onClick={() => deleteToDo(item.id)}>
+          Delete
+        </Button>
+      </td>
     </tr>
   );
 };
 
-const ToDoList = ({ items }) => {
+const ToDoList = ({ items, deleteToDo }) => {
   return (
     <Table striped hover size="lg">
       <thead>
@@ -31,7 +36,7 @@ const ToDoList = ({ items }) => {
 
       <tbody>
         {items.map((item) => (
-          <ToDoItem item={item} />
+          <ToDoItem item={item} deleteToDo={deleteToDo} />
         ))}
       </tbody>
     </Table>
