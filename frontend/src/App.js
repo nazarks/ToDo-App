@@ -10,7 +10,9 @@ import Footer from "./components/Footer";
 import MainMenu from "./components/MainMenu";
 import NotFound404 from "./components/NotFound404";
 import ProjectDetail from "./components/ProjectDetail";
+import ProjectForm from "./components/ProjectForm";
 import ProjectList from "./components/ProjectList";
+import ToDoForm from "./components/ToDoForm";
 import ToDoList from "./components/ToDoList";
 import UserList from "./components/UserList";
 
@@ -111,6 +113,57 @@ class App extends React.Component {
       .catch((error) => console.error(error));
   }
 
+  deleteProject(id) {
+    const headers = this.getHeaders();
+    axios
+      .delete(`http://127.0.0.01:8000/projects/${id}`, { headers })
+      .then((response) => {
+        this.loadData();
+      })
+      .catch((error) => console.log(error));
+  }
+
+  createProject(name, url, users) {
+    const headers = this.getHeaders();
+    const data = { name: name, url: url, users: users };
+    axios
+      .post(`http://127.0.0.1:8000/projects/`, data, { headers })
+      .then((response) => {
+        this.loadData();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  deleteToDo(id) {
+    const headers = this.getHeaders();
+    axios
+      .delete(`http://127.0.0.01:8000/ToDos/${id}`, { headers })
+      .then((response) => {
+        this.loadData();
+      })
+      .catch((error) => console.log(error));
+  }
+
+  createToDo(project, description, user) {
+    const headers = this.getHeaders();
+    const data = {
+      project: project,
+      description: description,
+      user: user,
+      isActive: true,
+    };
+    axios
+      .post(`http://127.0.0.1:8000/ToDos/`, data, { headers })
+      .then((response) => {
+        this.loadData();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   componentDidMount() {
     this.getTokenFromStorage();
   }
@@ -135,9 +188,27 @@ class App extends React.Component {
 
                 <Route path="/projects">
                   <Route
-                    index
-                    element={<ProjectList items={this.state.projects} />}
+                    path="/projects/create"
+                    element={
+                      <ProjectForm
+                        isAuth={() => this.isAuth()}
+                        users={this.state.users}
+                        createProject={(name, url, users) =>
+                          this.createProject(name, url, users)
+                        }
+                      />
+                    }
                   />
+                  <Route
+                    index
+                    element={
+                      <ProjectList
+                        items={this.state.projects}
+                        deleteProject={(id) => this.deleteProject(id)}
+                      />
+                    }
+                  />
+
                   <Route
                     path=":projectId"
                     element={
@@ -151,9 +222,26 @@ class App extends React.Component {
 
                 <Route
                   path="/todos"
-                  element={<ToDoList items={this.state.todo} />}
+                  element={
+                    <ToDoList
+                      items={this.state.todo}
+                      deleteToDo={(id) => this.deleteToDo(id)}
+                    />
+                  }
                 />
-
+                <Route
+                  path="/todos/create"
+                  element={
+                    <ToDoForm
+                      isAuth={() => this.isAuth()}
+                      users={this.state.users}
+                      projects={this.state.projects}
+                      createToDo={(project, description, user) =>
+                        this.createToDo(project, description, user)
+                      }
+                    />
+                  }
+                />
                 <Route
                   path="/login"
                   element={
