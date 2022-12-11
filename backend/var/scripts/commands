@@ -1,0 +1,3 @@
+python manage.py dumpdata authapp.customuser > authapp/fixtures/001_users.json
+python manage.py dumpdata --exclude auth.permission --exclude contenttypes > fixtures/db.json
+python manage.py loaddata fixtures/all_data.json
