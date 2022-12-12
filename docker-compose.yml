@@ -1,0 +1,39 @@
+version: "3.1"
+
+services:
+  db:
+    image: postgres:15.1
+    privileged: true
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: todo_user
+      POSTGRES_PASSWORD: todo_pass
+      POSTGRES_DB: todo_db
+
+  backend:
+    build:
+      context: ./backend
+    expose:
+      - 8080
+    command: bash -c "
+      ./wait-for-postgres.sh db
+      && python manage.py migrate
+      && python manage.py loaddata fixtures/db.json
+      && gunicorn config.wsgi:application --bind 0.0.0.0:8080"
+    depends_on:
+      - db
+
+  nginx:
+    build: ./nginx
+    ports:
+      - 8000:80
+    depends_on:
+      - backend
+
+  frontend:
+    build: ./frontend
+    ports:
+      - 80:80
+    depends_on:
+      - nginx
